@@ -1,0 +1,2 @@
+reference_id,account,instrument,side,quantity,cash_amount,currency,settlement_date
+T_FUZZY_1,ACC1,AAPL,BUY,10,1504.00,USD,2023-10-03

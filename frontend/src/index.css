@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-slate-50);
+  color: var(--color-gray-900);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 0) 0, hsla(253, 16%, 7%, 0) 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 0.1) 0, hsla(225, 39%, 30%, 0) 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 0.1) 0, hsla(339, 49%, 30%, 0) 50%);
+}
