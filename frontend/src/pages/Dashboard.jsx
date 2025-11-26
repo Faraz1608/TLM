@@ -78,7 +78,7 @@ const Dashboard = () => {
                     <div className="flex justify-between items-start">
                         <div>
                             <p className="text-sm font-medium text-gray-500">Resolved Today</p>
-                            <h3 className="text-3xl font-bold text-gray-900 mt-2">0</h3>
+                            <h3 className="text-3xl font-bold text-gray-900 mt-2">{stats.summary.resolvedToday}</h3>
                         </div>
                         <div className="p-2 bg-green-50 rounded-lg text-green-600">
                             <CheckCircle size={20} />

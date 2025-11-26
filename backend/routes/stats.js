@@ -5,7 +5,7 @@ const Break = require('../models/Break');
 // GET /api/stats - Get dashboard statistics
 router.get('/', async (req, res) => {
   try {
-    const [statusStats, typeStats, severityStats, totalOpen, totalHighSeverity] = await Promise.all([
+    const [statusStats, typeStats, severityStats, totalOpen, totalHighSeverity, resolvedToday] = await Promise.all([
       // Group by Status
       Break.aggregate([
         { $group: { _id: '$status', count: { $sum: 1 } } }
@@ -21,7 +21,15 @@ router.get('/', async (req, res) => {
       // Total Open
       Break.countDocuments({ status: 'OPEN' }),
       // Total High Severity
-      Break.countDocuments({ severity: 'HIGH' })
+      Break.countDocuments({ severity: 'HIGH' }),
+      // Resolved Today
+      Break.countDocuments({ 
+        status: { $ne: 'OPEN' },
+        updatedAt: { 
+          $gte: new Date(new Date().setHours(0, 0, 0, 0)),
+          $lt: new Date(new Date().setHours(23, 59, 59, 999))
+        }
+      })
     ]);
 
     res.json({
@@ -30,7 +38,8 @@ router.get('/', async (req, res) => {
       severity: severityStats.map(s => ({ name: s._id, value: s.count })),
       summary: {
         totalOpen,
-        totalHighSeverity
+        totalHighSeverity,
+        resolvedToday
       }
     });
   } catch (err) {
