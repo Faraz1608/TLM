@@ -5,7 +5,7 @@ const cors = require('cors');
 const uploadRoutes = require('./routes/upload');
 
 const app = express();
-const PORT = process.env.PORT || 5002 ;
+const PORT = process.env.PORT || 5001 ;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/tlm_simulator';
 
 // Middleware
